@@ -1,0 +1,16 @@
+local GUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/aaaa"))()
+local UI = GUI:CreateWindow("Nexora", "Pop it trading")
+
+local MainHome = UI:addPage("Main",1,true,6)
+MainHome:addLabel("Who made this script?", "Script is made by nexora developers!")
+MainHome:addLabel("This is a Label", "Lol this funny")
+
+MainHome:addButton("Copy Discord Link", function()
+    setclipboard("https://discord.gg/TvvPgnTVRM")
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "Copied!",
+        Text = "Discord link copied to clipboard."
+    })
+end)
+
+local AutobuyHome = UI:addPage("Autobuy",2,true,6)
