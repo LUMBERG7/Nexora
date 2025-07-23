@@ -14,3 +14,19 @@ MainHome:addButton("Copy Discord Link", function()
 end)
 
 local AutobuyHome = UI:addPage("Autobuy",2,true,6)
+
+-- 🔂 Lazy-load only when tab is opened
+local loaded = false
+AutobuyHome:onFocused(function()
+    if loaded then return end
+    loaded = true
+
+    local success, err = pcall(function()
+        getgenv().AutobuyHome = AutobuyHome -- 👈 Pass the page into the sub-script
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/LUMBERG7/Nexora/main/Autobuy.lua"))()
+    end)
+
+    if not success then
+        warn("Failed to load Autobuy script:", err)
+    end
+end)
